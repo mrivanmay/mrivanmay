@@ -1,29 +1,34 @@
-Class LinearFunction {
+public class LinearFunction {
     
-    Public Static main([] args) {
+    Public Static void main(String[] args) {
         
-        Scanner x1Scan = new Scanner();
+        Scanner x1Scan = new Scanner(System.in);
         System.out.println("Введите значение точки x1: ");
-        int x1 = x1Scan.nextInt();
+        BigDecimal x1 = new BigDecimal(x1Scan.nextLine());
 
-        Scanner y1Scan = new Scanner();
+        Scanner y1Scan = new Scanner(System.in);
         System.out.println("Введите значение точки y1: ");
-        int y1 = x2Scan.nextInt();
+        BigDecimal y1 = new BigDecimal(x2Scan.nextLine());
 
-        Scanner x2Scan = new Scanner();
+        Scanner x2Scan = new Scanner(System.in);
         System.out.println("Введите значение точки x2: ");
-        int x2 = x2Scan.nextInt();
+        BigDecimal x2 = new BigDecimal(x2Scan.nextLine());
 
-        Scanner y2Scan = new Scanner();
+        Scanner y2Scan = new Scanner(System.in);
         System.out.println("Введите значение точки y2: ");
-        int y2 = y2Scan.nextInt();
+        BigDecimal y2 = new BigDecimal(y2Scan.nextLine());
+
+        if (x1.compareTo(x2) == 0) {
+            System.out.println("Уравнение невозможно. Точки х имеют одинаковое значение");
+        }
 
         // y = ax + b
         // a = (y2 - y1) / (x2 - x1)
+        // add, subtract, multiply, divide
 
-        int a = (y2 - y1) / (x2 - x1);
-        int b1 = y1 - a * x1;
-        int b2 = y2 - a * x2;
+        BigDecimal a = (y2.subtract(y1)).divide(x2.subtract(x1));
+        BigDecimal b1 = y1.subtract(a.multiply(x1));
+        BigDecimal b2 = y2.subtract(a.multiply(x2));
 
         if (b1 == b2) {
             System.out.println("Уравнение прямой по заданным точкам: y = " + a + "x + " + b1);
